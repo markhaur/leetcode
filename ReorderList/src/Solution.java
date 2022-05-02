@@ -28,9 +28,70 @@ public class Solution {
     }
 
     private static void reorderList(ListNode head) {
-        reorder(head, head.next);
+        reorderBySplitting(head);
     }
 
+    private static void reorderBySplitting(ListNode head) {
+        if (head == null || head.next == null) return;
+
+        // head of first half
+        ListNode l1 = head;
+
+        // head of second half
+        ListNode slow = head;
+
+        // tail of second half
+        ListNode fast = head;
+
+        // tail of first half
+        ListNode prev = null;
+
+        // splitting the Singly Linked List into two Linked List
+        while (fast != null && fast.next != null) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // marking the end of for first list
+        prev.next = null;
+
+        ListNode l2 = reverse(slow);
+
+        merge(l1, l2);
+    }
+
+    private static void merge(ListNode l1, ListNode l2) {
+        while (l1 != null) {
+            ListNode l1_next = l1.next;
+            ListNode l2_next = l2.next;
+
+            l1.next = l2;
+
+            if (l1_next == null)
+                break;
+
+            l2.next = l1_next;
+            l1 = l1_next;
+            l2 = l2_next;
+        }
+    }
+
+    private static ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        ListNode currentNode = head;
+
+        while (currentNode != null) {
+            ListNode nextNode = currentNode.next;
+            currentNode.next = prev;
+            prev = currentNode;
+            currentNode = nextNode;
+        }
+
+        return prev;
+    }
+
+    // solution using arraylist
     private static void reorder(ListNode head) {
         List<ListNode> list = new ArrayList<>();
         ListNode current = head;
@@ -52,6 +113,7 @@ public class Solution {
         list.get(list.size() / 2).next = null;
     }
 
+    // solution using recursion
     private static ListNode reorder(ListNode head, ListNode other) {
         if (other == null)
             return null;
