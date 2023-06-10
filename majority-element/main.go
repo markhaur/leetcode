@@ -16,7 +16,7 @@ func majorityElement(nums []int) int {
 	maxNum := -1
 
 	for _, num := range nums {
-		count, _ := countMem[num]
+		count := countMem[num]
 		count = count + 1
 		countMem[num] = count
 		if count > maxCount {
