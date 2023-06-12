@@ -23,22 +23,18 @@ func main() {
 //   1 3 3 1
 //  1 4 6 4 1
 func generate(numRows int) [][]int {
-	var triangle [][]int
-	for i := 0; i < numRows; i++ {
-		if i == 0 {
-			triangle = append(triangle, []int{1})
-		} else {
-			oldArr := triangle[i-1]
-			var newArr = []int{1}
-			for z := 1; z <= len(oldArr); z++ {
-				if i == z {
-					newArr = append(newArr, 1)
-				} else {
-					newArr = append(newArr, oldArr[z-1]+oldArr[z])
-				}
+	triangle := [][]int{{1}}
+	for i := 1; i < numRows; i++ {
+		oldArr := triangle[i-1]
+		var newArr = []int{1}
+		for z := 1; z <= len(oldArr); z++ {
+			if i == z {
+				newArr = append(newArr, 1)
+			} else {
+				newArr = append(newArr, oldArr[z-1]+oldArr[z])
 			}
-			triangle = append(triangle, newArr)
 		}
+		triangle = append(triangle, newArr)
 	}
 	return triangle
 }
