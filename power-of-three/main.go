@@ -10,6 +10,7 @@ func main() {
 	fmt.Printf("isPowerOfThree(%d) = %t\n", 81, isPowerOfThree(81))
 }
 
+// https://leetcode.com/problems/power-of-three/description
 func isPowerOfThree(n int) bool {
 	power := 1
 	for n >= power {
