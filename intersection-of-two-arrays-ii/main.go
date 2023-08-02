@@ -9,6 +9,7 @@ func main() {
 	fmt.Printf("%v intersection %v => %v\n", nums1, nums2, intersect(nums1, nums2))
 }
 
+// https://leetcode.com/problems/intersection-of-two-arrays-ii/description
 func intersect(nums1 []int, nums2 []int) []int {
 	intersection := make([]int, 0)
 
