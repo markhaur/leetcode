@@ -15,15 +15,7 @@ func main() {
 	fmt.Printf("Guess number from 1 - 10: %d\n", guessNumber(10))
 }
 
-/**
- * Forward declaration of guess API.
- * @param  num   your guess
- * @return 	     -1 if num is higher than the picked number
- *			      1 if num is lower than the picked number
- *               otherwise return 0
- * func guess(num int) int;
- */
-
+// https://leetcode.com/problems/guess-number-higher-or-lower/description
 func guessNumber(n int) int {
 	low, high := 0, n
 
@@ -42,7 +34,15 @@ func guessNumber(n int) int {
 	return -1
 }
 
-// the api method is provided by leetcode
+/**
+ * the api method is provided by leetcode
+ * Forward declaration of guess API.
+ * @param  num   your guess
+ * @return 	     -1 if num is higher than the picked number
+ *			      1 if num is lower than the picked number
+ *               otherwise return 0
+ * func guess(num int) int;
+ */
 func guess(g int) int {
 	if g == GUESS {
 		return 0
