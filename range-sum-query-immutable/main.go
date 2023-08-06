@@ -7,6 +7,7 @@ func main() {
 	fmt.Printf("sum in range 0, 10 is %d", obj.SumRange(0, 9))
 }
 
+// https://leetcode.com/problems/range-sum-query-immutable/description
 type NumArray struct {
 	prefixArr []int
 }
